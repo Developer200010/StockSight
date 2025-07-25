@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const Trade = require('../models/Trade.js');
-
+const fs = require("fs");
 const { uploadTrades, getHoldings } = require("../controllers/tradeController.js")
 
 const router = express.Router();
