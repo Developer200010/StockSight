@@ -1,21 +1,18 @@
+// utils/csvParser.js
 const csv = require("csv-parser");
-const stream = require("stream");
+const { Readable } = require("stream");
 
-const parseCSVBuffer = (buffer) => {
-    return new Promise((resolve, reject) => {
-        const results = [];
+function parseCSV(buffer) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    const stream = Readable.from(buffer);
 
-        const readable = new stream.Readable();
-        readable._read = () => {};
-        readable.push(buffer);
-        readable.push(null);
+    stream
+      .pipe(csv())
+      .on("data", (data) => results.push(data))
+      .on("end", () => resolve(results))
+      .on("error", reject);
+  });
+}
 
-        readable
-            .pipe(csv())
-            .on("data", (data) => results.push(data))
-            .on("end", () => resolve(results))
-            .on("error", reject);
-    });
-};
-
-module.exports = parseCSVBuffer;
+module.exports = parseCSV;
