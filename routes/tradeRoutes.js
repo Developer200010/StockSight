@@ -2,18 +2,12 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const Trade = require('../models/Trade.js');
-const fs = require("fs");
-const { uploadTrades, getHoldings } = require("../controllers/tradeController.js")
+
+const {uploadTrades, getHoldings} = require("../controllers/tradeController.js")
 
 const router = express.Router();
 
-const tmpUploadsPath = path.join('/tmp', 'uploads');
-// If needed, create directory at runtime:
-if (!fs.existsSync(tmpUploadsPath)) {
-  fs.mkdirSync(tmpUploadsPath, { recursive: true });
-}
-const upload = multer({ dest: tmpUploadsPath });
-
+const upload = multer({dest:path.join(__dirname,"..","uploads")})
 
 router.post("/upload", upload.single("file"), uploadTrades);
 // router.get("/holdings", getHoldings);
