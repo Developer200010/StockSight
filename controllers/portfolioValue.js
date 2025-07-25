@@ -1,7 +1,7 @@
 // controllers/portfolioController.js
 const yahooFinance = require('yahoo-finance2').default;
-const CurrencyRate = require('../models/CurrencyRate.jsx');
-const Trade = require('../models/Trade.jsx');
+const CurrencyRate = require('../models/CurrencyRate.js');
+const Trade = require('../models/Trade.js');
 
 async function getTotalPortfolioValue(req, res) {
   try {

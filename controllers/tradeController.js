@@ -1,5 +1,5 @@
-const Trade = require("../models/Trade.jsx");
-const parseCSV = require("../utils/csvParser.jsx");
+const Trade = require("../models/Trade.js");
+const parseCSV = require("../utils/csvParser.js");
 const path = require("path");
 const fs = require("fs")
 const uploadTrades = async (req, res) => {

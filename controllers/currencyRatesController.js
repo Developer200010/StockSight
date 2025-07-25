@@ -1,4 +1,4 @@
-const CurrencyRate = require("../models/CurrencyRate.jsx");
+const CurrencyRate = require("../models/CurrencyRate.js");
 const yahooFinance = require("yahoo-finance2").default;
 
 async function getLatestCurrencyRates(req, res) {

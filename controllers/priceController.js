@@ -1,4 +1,4 @@
-const PriceHistory = require('../models/PriceHistory.jsx');
+const PriceHistory = require('../models/PriceHistory.js');
 
 async function getLatestPrice(req, res) {
   try {

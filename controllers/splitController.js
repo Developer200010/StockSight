@@ -1,5 +1,5 @@
 // controllers/splitController.js
-const Split = require('../models/Split.jsx');
+const Split = require('../models/Split.js');
 
 async function getSplits(req, res) {
   try {

@@ -1,4 +1,4 @@
-const Trade = require("../models/Trade.jsx");
+const Trade = require("../models/Trade.js");
 
 
 // Helper: Compute holdings from trades

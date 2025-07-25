@@ -1,7 +1,7 @@
-const Split = require("../models/Split.jsx");
-const Trade = require("../models/Trade.jsx");
-const CurrencyRate = require("../models/CurrencyRate.jsx");
-const  fetchAdjustedPrice  = require("../utils/fetchAdjustedPrices.jsx");
+const Split = require("../models/Split.js");
+const Trade = require("../models/Trade.js");
+const CurrencyRate = require("../models/CurrencyRate.js");
+const  fetchAdjustedPrice  = require("../utils/fetchAdjustedPrices.js");
 require("dotenv").config();
 
 const adjustTradesForSplits = async (req, res) => {

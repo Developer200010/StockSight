@@ -1,6 +1,6 @@
-const { calculateHoldings } = require("../utils/calculateHoldings.jsx");
-const PriceHistory = require("../models/PriceHistory.jsx");
-const CurrencyRate = require("../models/CurrencyRate.jsx");
+const { calculateHoldings } = require("../utils/calculateHoldings.js");
+const PriceHistory = require("../models/PriceHistory.js");
+const CurrencyRate = require("../models/CurrencyRate.js");
 async function getHoldings(req, res) {
   try {
     // 1. Calculate holdings from trade history

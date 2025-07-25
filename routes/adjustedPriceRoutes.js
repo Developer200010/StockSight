@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fetchAdjustedPrices = require("../utils/fetchAdjustedPrices.jsx");
+const fetchAdjustedPrices = require("../utils/fetchAdjustedPrices.js");
 
 router.get("/adjusted-prices", async (req, res) => {
   const { symbol, from, to } = req.query;

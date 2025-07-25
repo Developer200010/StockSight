@@ -1,7 +1,7 @@
 // seedSplits.js
 const mongoose = require('mongoose');
-const Split = require('./models/Split.jsx');
-// const connectDB = require('./config/db.jsx');
+const Split = require('./models/Split.js');
+// const connectDB = require('./config/db.js');
 require("dotenv").config()
 async function seedSplits() {
   // await connectDB();
