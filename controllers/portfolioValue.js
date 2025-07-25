@@ -2,9 +2,10 @@
 const yahooFinance = require('yahoo-finance2').default;
 const CurrencyRate = require('../models/CurrencyRate.js');
 const Trade = require('../models/Trade.js');
-
+const connectDB = require("../config/db.js");
 async function getTotalPortfolioValue(req, res) {
   try {
+    await connectDB()
     // 1. Aggregate holdings by summing trade quantities
     const trades = await Trade.find({});
     const holdingsMap = new Map();

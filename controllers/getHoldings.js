@@ -1,8 +1,10 @@
 const { calculateHoldings } = require("../utils/calculateHoldings.js");
 const PriceHistory = require("../models/PriceHistory.js");
 const CurrencyRate = require("../models/CurrencyRate.js");
+const connectDB = require("../config/db.js");
 async function getHoldings(req, res) {
   try {
+    await connectDB();
     // 1. Calculate holdings from trade history
     const holdings = await calculateHoldings();
     const symbols = holdings.map(h => h.symbol);

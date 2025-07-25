@@ -9,7 +9,6 @@ const priceRoutes = require('./routes/priceRoute.js');
 const getHoldings = require("./routes/holdingRoute.js")
 const currencyRatesRoutes = require("./routes/currencyRates.js");
 const splitRoute = require('./routes/splitRoute.js');
-const mongoose = require("mongoose")
 const app = express();
 const path = require("path")
 require("dotenv").config();
@@ -51,20 +50,20 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // database connection function.
-const dbConnect = async () => {
-  try {
-    if (process.env.NODE_ENV === "local") {
-      await mongoose.connect("mongodb://localhost:27017/portfolio-tracker");
-      console.log("local database is connected...");
-    } else {
-      await mongoose.connect(process.env.MONGO_URL);
-      console.log("production database is connected....");
-    }
-  } catch (error) {
-    console.log("database connection fail...." + error);
-  }
-};
-dbConnect();
+// const dbConnect = async () => {
+//   try {
+//     if (process.env.NODE_ENV === "local") {
+//       await mongoose.connect("mongodb://localhost:27017/portfolio-tracker");
+//       console.log("local database is connected...");
+//     } else {
+//       await mongoose.connect(process.env.MONGO_URL);
+//       console.log("production database is connected....");
+//     }
+//   } catch (error) {
+//     console.log("database connection fail...." + error);
+//   }
+// };
+// dbConnect();
 
 
 

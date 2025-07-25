@@ -1,13 +1,15 @@
 const Trade = require("../models/Trade.js");
-const parseCSV = require("../utils/csvParser.js"); // same import
-// REMOVE path and fs – not needed now
+const parseCSV = require("../utils/csvParser.js");
+const connectDB = require("../config/db.js"); // ✅ Import your DB connector
 
 const uploadTrades = async (req, res) => {
     try {
+        await connectDB(); // ✅ Ensure DB is connected before using Mongoose models
+
         const file = req.file;
         if (!file) return res.status(400).json({ error: "No file uploaded" });
 
-        const trades = await parseCSV(file.buffer); // ✅ Now using memory buffer
+        const trades = await parseCSV(file.buffer); // ✅ parse from memory
 
         await Trade.deleteMany({});
 
@@ -54,4 +56,4 @@ const uploadTrades = async (req, res) => {
     }
 };
 
-module.exports = {uploadTrades}
+module.exports = { uploadTrades };

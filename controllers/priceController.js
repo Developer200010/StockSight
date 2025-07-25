@@ -1,7 +1,8 @@
 const PriceHistory = require('../models/PriceHistory.js');
-
+const connectDB = require("../config/db.js");
 async function getLatestPrice(req, res) {
   try {
+    await connectDB();
     const { symbol } = req.params;
     const latestPrice = await PriceHistory.findOne({ symbol: symbol.toUpperCase() })
                                          .sort({ date: -1 });

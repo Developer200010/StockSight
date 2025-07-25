@@ -1,8 +1,9 @@
 const CurrencyRate = require("../models/CurrencyRate.js");
 const yahooFinance = require("yahoo-finance2").default;
-
+const connectDB = require("../config/db.js");
 async function getLatestCurrencyRates(req, res) {
   try {
+    await connectDB();
     // Try to get the latest stored rates
     let latestRate = await CurrencyRate.findOne().sort({ date: -1 });
     const today = new Date().toISOString().slice(0, 10);

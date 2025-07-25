@@ -1,8 +1,9 @@
 // controllers/splitController.js
 const Split = require('../models/Split.js');
-
+const connectDB = require("../config/db.js");
 async function getSplits(req, res) {
   try {
+    await connectDB();
     const splits = await Split.find().sort({ splitDate: -1 }); // newest first
     res.json({ success: true, splits });
   } catch (error) {
