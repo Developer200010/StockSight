@@ -1,12 +1,16 @@
-const fs = require("fs");
 const csv = require("csv-parser");
+const stream = require("stream");
 
-const parseCSV = (filePath) => {
-    console.log(filePath)
+const parseCSVBuffer = (buffer) => {
     return new Promise((resolve, reject) => {
         const results = [];
 
-        fs.createReadStream(filePath)
+        const readable = new stream.Readable();
+        readable._read = () => {};
+        readable.push(buffer);
+        readable.push(null);
+
+        readable
             .pipe(csv())
             .on("data", (data) => results.push(data))
             .on("end", () => resolve(results))
@@ -14,4 +18,4 @@ const parseCSV = (filePath) => {
     });
 };
 
-module.exports = parseCSV;
+module.exports = parseCSVBuffer;

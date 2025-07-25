@@ -7,7 +7,7 @@ const {uploadTrades, getHoldings} = require("../controllers/tradeController.js")
 
 const router = express.Router();
 
-const upload = multer({dest:path.join(__dirname,"..","uploads")})
+const upload = multer({ storage: multer.memoryStorage() }); 
 
 router.post("/upload", upload.single("file"), uploadTrades);
 // router.get("/holdings", getHoldings);
